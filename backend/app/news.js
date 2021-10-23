@@ -47,10 +47,11 @@ router.put ('/:id', upload.single('image'), async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    const eraseNews = await mysql.getConnection().query(
+
+    await mysql.getConnection().query(
       'DELETE FROM news where id = ?',
       [req.params.id]
-    )
+    );
   res.send({message: "was DELETED"});
 })
 
